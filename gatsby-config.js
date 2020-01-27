@@ -7,7 +7,7 @@ require(`dotenv`).config({
   path: `.env.${activeEnv}`,
 })
 
-console.log(`This WordPress Endpoint is used: '${process.env.WORDPRESS_URL}'`)
+console.log(`This WordPress Endpoint is used: 'http://edmondswp.mydevenv.co'`)
 
 module.exports = {
   plugins: [
@@ -51,14 +51,14 @@ module.exports = {
       options: {
         typeName: `WPGraphQL`,
         fieldName: `wpgraphql`,
-        url: `${process.env.WORDPRESS_URL}/graphql`,
+        url: `http://edmondswp.mydevenv.co/graphql`,
       },
     },
     {
       resolve: `gatsby-wpgraphql-inline-images`,
       options: {
-        wordPressUrl: `${process.env.WORDPRESS_URL}/`,
-        uploadsUrl: `${process.env.WORDPRESS_URL}/wp-content/uploads/`,
+        wordPressUrl: `http://edmondswp.mydevenv.co/`,
+        uploadsUrl: `http://edmondswp.mydevenv.co/wp-content/uploads/`,
         processPostTypes: [`Page`, `Post`],
         graphqlTypeName: `WPGraphQL`,
       },

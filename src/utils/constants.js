@@ -1,3 +1,3 @@
-export const wordpressUrl = `http://edmonds.local/`
+export const wordpressUrl = `http://edmondswp.mydevenv.co/`
 
-export const uploadsUrl = `http://edmonds.local/wp-content/uploads/`
+export const uploadsUrl = `http://edmondswp.mydevenv.co/wp-content/uploads/`

@@ -1,3 +1,5 @@
+const path = require(`path`)
+
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || `development`
 
@@ -15,7 +17,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `./src/images`,
+        path: path.join(__dirname, `src`, `images`),
       },
     },
     `gatsby-transformer-sharp`,

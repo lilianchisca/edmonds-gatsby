@@ -1,0 +1,32 @@
+{
+  "extends": ["wesbos"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["emotion"],
+  "rules": {
+    "camelcase": 0,
+    "emotion/jsx-import": "error",
+    "emotion/no-vanilla": "error",
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error",
+    "global-require": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "quotes": ["error", "backtick"],
+    "no-nested-ternary": 0,
+    "no-plusplus": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/react-in-jsx-scope": 1,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
+    "react/no-danger": 0
+  }
+}

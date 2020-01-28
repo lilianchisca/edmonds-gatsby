@@ -48,6 +48,26 @@ module.exports = {
         purgeOnly: [`src/styles/tailwind.scss`],
       },
     },
+    // {
+    //   resolve: `gatsby-source-gravityforms`,
+    //   options: {
+    //     baseUrl: `http://edmondswp.mydevenv.co`,
+    //     api: {
+    //       key: `ck_84e457df9d648a3cdc1cfa76616d822848f8a742`,
+    //       secret: `cs_bf83318787f5f44632e9a06c48c6502be26bc073`,
+    //     },
+    //   },
+    // },
+    {
+      resolve: `gatsby-source-gravityforms`,
+      options: {
+        baseUrl: `http://edmondswp.mydevenv.co`,
+        api: {
+          key: `ck_dcb2056dd47e24d25fe0febc3e38ae2ebac9abc5`,
+          secret: `cs_1acd0184ab029b2eae252e94533997e721a7960d`,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-graphql`,
       options: {

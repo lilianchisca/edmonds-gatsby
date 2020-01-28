@@ -338,6 +338,23 @@ h6 {
   }
 }
 
+.formcontentblock {
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.046875em;
+    line-height: 2;
+    margin-bottom: 1.4em;
+    color: #6e788e;
+
+    &:first-child {
+      font-size: 19px;
+      color: #00254a;
+      letter-spacing: 0.062631579em;
+    }
+  }
+}
+
 .servicecontentblock {
   font-size: 16px;
   font-weight: 400;
@@ -567,3 +584,4 @@ h6 {
 }
 
 @import 'slick';
+@import 'gform';

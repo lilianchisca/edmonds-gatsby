@@ -74,6 +74,7 @@ module.exports = {
         outline: `0 0 0 3px rgba(66, 153, 225, 0.5)`,
         none: `none`,
         box: `0 10px 20px rgba(0, 0, 0, 0.1)`,
+        form: `0 8px 16px -8px rgba(0, 0, 0, 0.3)`,
       },
       colors: {
         yellow: {
@@ -164,6 +165,7 @@ module.exports = {
         760: `760px`,
       },
       minWidth: {
+        60: `60px`,
         110: `110px`,
         166: `166px`,
         196: `196px`,
@@ -171,6 +173,7 @@ module.exports = {
       maxHeight: {},
       maxWidth: {
         310: `310px`,
+        430: `430px`,
         480: `480px`,
         550: `550px`,
         570: `570px`,

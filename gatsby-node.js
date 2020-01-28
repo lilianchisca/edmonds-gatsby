@@ -3,6 +3,7 @@ const LoadablePlugin = require(`@loadable/webpack-plugin`)
 const { statsFilename, statsPath } = require(`./gatsby/constants`)
 const createPages = require(`./gatsby/node/createPages`)
 const createPosts = require(`./gatsby/node/createPosts`)
+const createServices = require(`./gatsby/node/createServices`)
 
 exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
   if (stage === `build-javascript`) {
@@ -31,4 +32,5 @@ exports.createResolvers = require(`./gatsby/node/createResolvers`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createPages({ actions, graphql, reporter })
   await createPosts({ actions, graphql, reporter })
+  await createServices({ actions, graphql, reporter })
 }

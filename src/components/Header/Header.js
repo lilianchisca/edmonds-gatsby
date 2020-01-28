@@ -1,11 +1,73 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 
 import UniversalLink from '../UniversalLink'
 import Button from '../Button'
 import { useScrollYPosition } from '../../hooks/useScrollPosition'
 import useScrollDirection from '../../hooks/useScrollDirection'
 import Logo from '../../icons/logo.inline.svg'
+
+const StyledDropdown = styled.div`
+  position: relative;
+
+  &:hover {
+    .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 270px;
+    padding-top: 27px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px);
+    transition: all 0.3s;
+
+    ul {
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      transform: translateX(-50%);
+      display: block;
+      width: 100%;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 9.5px 11px 9.5px;
+        border-color: transparent transparent #ffffff transparent;
+        position: absolute;
+        top: -11px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      li {
+        display: flex;
+        text-align: center;
+        height: 67px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #f2f4f6;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+`
 
 const MENU_QUERY = graphql`
   query GETMAINMENU {
@@ -66,25 +128,66 @@ const Header = () => {
             <Logo />
           </UniversalLink>
 
-          <nav className="ml-10">
+          <nav className="flex items-center ml-10">
             {menuItems &&
-              menuItems.map(menuItem => (
-                <UniversalLink
-                  key={menuItem.id}
-                  to={menuItem.url}
-                  getProps={({ isCurrent }) =>
-                    isCurrent
-                      ? {
-                          className: `ml-45 text-14 tracking-button uppercase leading-relaxed text-white link-line-shrink`,
-                        }
-                      : {
-                          className: `ml-45 text-14 tracking-button uppercase leading-relaxed text-white link-line`,
-                        }
-                  }
-                >
-                  {menuItem.label}
-                </UniversalLink>
-              ))}
+              menuItems.map(menuItem =>
+                menuItem.childItems.edges.length > 0 ? (
+                  <StyledDropdown className="ml-45" key={menuItem.id}>
+                    <UniversalLink
+                      to={menuItem.url}
+                      getProps={({ isCurrent }) =>
+                        isCurrent
+                          ? {
+                              className: `text-14 tracking-button uppercase leading-relaxed text-white link-line-shrink`,
+                            }
+                          : {
+                              className: `text-14 tracking-button uppercase leading-relaxed text-white link-line`,
+                            }
+                      }
+                    >
+                      {menuItem.label}
+                    </UniversalLink>
+                    <div className="submenu">
+                      <ul>
+                        {menuItem.childItems.edges.map(({ node }) => (
+                          <li key={node.id}>
+                            <UniversalLink
+                              to={node.url}
+                              getProps={({ isCurrent }) =>
+                                isCurrent
+                                  ? {
+                                      className: `text-17 font-heading leading-relaxed text-aqua-500 link-line-shrink`,
+                                    }
+                                  : {
+                                      className: `text-17 font-heading leading-relaxed text-blue-500 link-line`,
+                                    }
+                              }
+                            >
+                              {node.label}
+                            </UniversalLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </StyledDropdown>
+                ) : (
+                  <UniversalLink
+                    key={menuItem.id}
+                    to={menuItem.url}
+                    getProps={({ isCurrent }) =>
+                      isCurrent
+                        ? {
+                            className: `ml-45 text-14 tracking-button uppercase leading-relaxed text-white link-line-shrink`,
+                          }
+                        : {
+                            className: `ml-45 text-14 tracking-button uppercase leading-relaxed text-white link-line`,
+                          }
+                    }
+                  >
+                    {menuItem.label}
+                  </UniversalLink>
+                )
+              )}
           </nav>
         </div>
 

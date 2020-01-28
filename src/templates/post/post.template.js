@@ -7,6 +7,7 @@ import contentParser from 'gatsby-wpgraphql-inline-images'
 import { wordPressUrl, uploadsUrl } from '../../utils/constants'
 
 import Layout from '../../layouts/Layout'
+import SEO from '../../components/SEO'
 import UniversalLink from '../../components/UniversalLink'
 import BackgroundImage from '../../components/BackgroundImage'
 import RellaxParallax from '../../components/RellaxParallax'
@@ -91,6 +92,7 @@ const PostTemplate = ({ pageContext, data }) => {
 
   return (
     <Layout>
+      <SEO title={title} />
       <section className="overflow-hidden bg-blue-600 border-yellow-500 border-b-5">
         <div className="relative flex items-center justify-center overflow-hidden min-h-330">
           <div className="relative w-full mx-auto text-center text-white max-w-1020 px-30 pt-55">

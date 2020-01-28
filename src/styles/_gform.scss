@@ -152,3 +152,99 @@
     margin-left: 28px;
   }
 }
+
+.react-select__indicator {
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 9px;
+    height: 11.5px;
+    background: url(/images/dropdown.png) no-repeat center / 100% 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  svg {
+    display: none;
+  }
+}
+
+.react-select__option--is-selected {
+  background: #6784c9 !important;
+}
+
+.rc-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+.rc-pagination-item {
+  @apply font-heading;
+  color: #8b9abf;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 20px;
+  padding-right: 20px;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    cursor: pointer;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.rc-pagination-item-active {
+    @apply text-blue-500;
+  }
+}
+
+.rc-pagination-prev {
+  width: 30px;
+  height: 20px;
+  background: url('/images/prev.png') no-repeat center / 13px 9px;
+  margin-right: 50px;
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.rc-pagination-next {
+  width: 30px;
+  height: 20px;
+  background: url('/images/prev.png') no-repeat center / 13px 9px;
+  margin-left: 50px;
+  transform: rotate(180deg);
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}

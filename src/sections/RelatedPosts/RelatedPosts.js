@@ -3,6 +3,7 @@ import { string, shape, arrayOf } from 'prop-types'
 import moment from 'moment/moment'
 
 import BackgroundImage from '../../components/BackgroundImage'
+import UniversalLink from '../../components/UniversalLink'
 
 const RelatedPosts = ({ sectionIndex, pretitle, title, relatedPosts }) => (
   <section data-section-index={sectionIndex}>
@@ -16,8 +17,8 @@ const RelatedPosts = ({ sectionIndex, pretitle, title, relatedPosts }) => (
         <ul className="flex flex-wrap pt-70 -mx-25">
           {relatedPosts.map(({ post }) => (
             <li className="w-1/3 px-25" key={post.id}>
-              <a
-                href={`/news/${post.slug}/`}
+              <UniversalLink
+                to={`/news/${post.slug}/`}
                 className="flex flex-col h-full overflow-hidden bg-white border border-transparent rounded-5 shadow-box transition-all duration-300 hover:border-gray-200 hover:shadow-none"
               >
                 <header className="relative h-220 overflow">
@@ -39,7 +40,7 @@ const RelatedPosts = ({ sectionIndex, pretitle, title, relatedPosts }) => (
                     </span>
                   </footer>
                 </section>
-              </a>
+              </UniversalLink>
             </li>
           ))}
         </ul>

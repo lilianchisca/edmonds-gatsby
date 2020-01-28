@@ -4,13 +4,16 @@ const ServiceTemplateFragment = `
     title
     content
     uri
-    serviceSettings {
-      sidebarTitle
-      sidebarLinks {
-        link {
-          target
-          title
-          url
+    serviceTags {
+      edges {
+        node {
+          name
+          services {
+            nodes {
+              title
+              uri
+            }
+          }
         }
       }
     }

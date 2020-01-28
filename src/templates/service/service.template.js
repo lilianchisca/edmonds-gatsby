@@ -63,14 +63,14 @@ const StyledHeading = styled.h1`
 
 const ServiceTemplate = ({ pageContext }) => {
   const {
-    service: {
-      title,
-      content,
-      serviceSettings: { sidebarTitle, sidebarLinks },
-    },
+    service: { title, content, uri, serviceTags },
   } = pageContext
   const [inView, setInView] = useState(false)
   const { isUp } = useScrollDirection()
+  const sidebarTitle = serviceTags ? serviceTags.edges[0].node.name : ``
+  const sidebarLinks = serviceTags
+    ? serviceTags.edges[0].node.services.nodes.filter(link => link.uri !== uri)
+    : []
 
   useEffect(() => {
     setInView(true)
@@ -110,15 +110,16 @@ const ServiceTemplate = ({ pageContext }) => {
                   isUp ? `top-120` : `top-50`
                 } pb-50 transition-all duration-300`}
               >
-                <h2 className="mb-40 font-normal text-30">{sidebarTitle}</h2>
+                <h2 className="mb-40 font-normal text-30">
+                  Other {sidebarTitle} Services
+                </h2>
                 <ul>
                   {sidebarLinks &&
-                    sidebarLinks.map(({ link }) => (
+                    sidebarLinks.map(link => (
                       <li className="mb-25" key={link.title}>
                         <UniversalLink
                           className="text-aqua-500 link-line-revicon text-16 tracking-body"
-                          to={link.url}
-                          target={link.target}
+                          to={`/${link.uri}`}
                         >
                           <span />
                           <span>{link.title}</span>

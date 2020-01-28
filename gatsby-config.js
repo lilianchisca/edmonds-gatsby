@@ -61,7 +61,7 @@ module.exports = {
       options: {
         wordPressUrl: `http://edmondswp.mydevenv.co/`,
         uploadsUrl: `http://edmondswp.mydevenv.co/wp-content/uploads/`,
-        processPostTypes: [`Page`, `Post`],
+        processPostTypes: [`Page`, `Post`, `Service`],
         graphqlTypeName: `WPGraphQL`,
       },
     },

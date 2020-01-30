@@ -256,9 +256,10 @@ const NewsPage = () => {
             className="mx-auto mb-20 leading-loose text-blue-500 text-24 max-w-830 font-heading"
             dangerouslySetInnerHTML={{ __html: archiveBlogTestimonial.content }}
           />
-          <h3 className="uppercase text-aqua-500 text-14 font-body tracking-button">
-            {archiveBlogTestimonial.title}
-          </h3>
+          <h3
+            className="uppercase text-aqua-500 text-14 font-body tracking-button"
+            dangerouslySetInnerHTML={{ __html: archiveBlogTestimonial.title }}
+          />
         </div>
       </div>
     </li>

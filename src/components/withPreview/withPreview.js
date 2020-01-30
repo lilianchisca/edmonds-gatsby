@@ -29,7 +29,8 @@ const withPreview = (args = { preview: false }) => Component => {
       return (
         <div className="flex items-center justify-center w-full min-h-screen">
           <h2 className="mb-20 font-normal text-32 leading-body">
-            Error: ${error.message}
+            Error: {error.message}
+            <section>{JSON.stringify(error, null, 2)}</section>
           </h2>
         </div>
       )

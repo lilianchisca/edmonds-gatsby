@@ -15,15 +15,24 @@ export default function BackgroundImage({
   additionalClasses,
   image,
   cancelWidth,
+  fallback,
 }) {
   return (
     <StyledBackgroundImage
       className={`${additionalClasses} ${cancelWidth ? `` : `w-full`}`}
     >
-      <Img
-        fluid={image}
-        class="w-full h-full absolute inset-0 object-cover object-center"
-      />
+      {fallback ? (
+        <img
+          src={image}
+          className="absolute inset-0 object-cover object-center w-full h-full"
+          alt="Background"
+        />
+      ) : (
+        <Img
+          fluid={image}
+          class="w-full h-full absolute inset-0 object-cover object-center"
+        />
+      )}
       {children}
     </StyledBackgroundImage>
   )
@@ -37,4 +46,5 @@ BackgroundImage.propTypes = {
   additionalClasses: PropTypes.string,
   image: PropTypes.object.isRequired,
   cancelWidth: PropTypes.bool,
+  fallback: PropTypes.bool,
 }

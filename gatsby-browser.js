@@ -1,19 +1,25 @@
-require(`./src/styles/typekit.scss`)
-require(`./src/styles/global.scss`)
-require(`./src/styles/tailwind.scss`)
-require(`typeface-libre-baskerville`)
+import './src/styles/typekit.scss'
+import './src/styles/global.scss'
+import './src/styles/tailwind.scss'
+import 'typeface-libre-baskerville'
+import React from 'react'
+import { ApolloProvider } from 'react-apollo'
+import { hydrate } from 'react-dom'
+import { loadableReady } from '@loadable/component'
+import { client } from './src/apollo/client'
 
-const { hydrate } = require(`react-dom`)
-const { loadableReady } = require(`@loadable/component`)
-
-exports.replaceHydrateFunction = () => (element, container, callback) => {
+export const replaceHydrateFunction = () => (element, container, callback) => {
   loadableReady(() => {
     hydrate(element, container, callback)
   })
 }
 
-exports.onClientEntry = () => {
+export const onClientEntry = () => {
   if (typeof window.IntersectionObserver === `undefined`) {
     require(`intersection-observer`)
   }
 }
+
+export const wrapRootElement = ({ element }) => (
+  <ApolloProvider client={client}>{element}</ApolloProvider>
+)

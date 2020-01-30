@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { shape, string } from 'prop-types'
-import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import moment from 'moment/moment'
 import contentParser from 'gatsby-wpgraphql-inline-images'
+import gql from 'graphql-tag'
+import { graphql } from 'gatsby'
+
 import { wordPressUrl, uploadsUrl } from '../../utils/constants'
 
 import Layout from '../../layouts/Layout'
@@ -11,6 +13,8 @@ import SEO from '../../components/SEO'
 import UniversalLink from '../../components/UniversalLink'
 import BackgroundImage from '../../components/BackgroundImage'
 import RellaxParallax from '../../components/RellaxParallax'
+import withPreview from '../../components/withPreview'
+import { PostAdditionalQuery, PostPreviewQuery } from './post.data'
 
 const Chevron = styled.div`
   width: 6px;
@@ -72,17 +76,23 @@ const StyledHeading = styled.h1`
   }
 `
 
-const PostTemplate = ({ pageContext, data }) => {
+const PostTemplate = ({ preview, pageContext, data }) => {
   const {
-    post: { title, date, author, slug, content, featuredImage, categories },
-  } = pageContext
-  const posts = data.wpgraphql.posts.edges
+    title,
+    date,
+    author,
+    slug,
+    content,
+    featuredImage,
+    categories,
+  } = preview ? preview.postBy : pageContext.post
+  const propPosts = preview ? preview.posts.edges : data.wpgraphql.posts.edges
+  const posts = propPosts
     .map(({ node }) => node)
     .filter(post => post.slug !== slug)
-  const {
-    singleBlogCalloutLink,
-    singleBlogCalloutTitle,
-  } = data.wpgraphql.themeOptions.themeOptions
+  const { singleBlogCalloutLink, singleBlogCalloutTitle } = preview
+    ? preview.themeOptions.themeOptions
+    : data.wpgraphql.themeOptions.themeOptions
   const [inView, setInView] = useState(false)
   const category = categories.nodes.filter(({ name }) => name !== `Featured`)
 
@@ -169,8 +179,13 @@ const PostTemplate = ({ pageContext, data }) => {
                 speed="-0.5"
               >
                 <BackgroundImage
-                  image={featuredImage.imageFile.childImageSharp.fluid}
+                  image={
+                    featuredImage.imageFile
+                      ? featuredImage.imageFile.childImageSharp.fluid
+                      : featuredImage.sourceUrl
+                  }
                   additionalClasses="absolute h-full inset-0"
+                  fallback={preview}
                 />
               </RellaxParallax>
             </div>
@@ -207,8 +222,13 @@ const PostTemplate = ({ pageContext, data }) => {
                 >
                   <header className="relative h-220 overflow">
                     <BackgroundImage
-                      image={post.featuredImage.imageFile.childImageSharp.fluid}
+                      image={
+                        post.featuredImage.imageFile
+                          ? post.featuredImage.imageFile.childImageSharp.fluid
+                          : post.featuredImage.sourceUrl
+                      }
                       additionalClasses="absolute inset-0 pointer-events-none"
+                      fallback={preview}
                     />
                   </header>
                   <section className="flex flex-col flex-grow py-35 px-45">
@@ -242,7 +262,7 @@ PostTemplate.propTypes = {
   }),
 }
 
-export default PostTemplate
+const PREVIEW_QUERY = gql(PostPreviewQuery)
 
 export const query = graphql`
   query($category: String!) {
@@ -283,3 +303,5 @@ export const query = graphql`
     }
   }
 `
+
+export default withPreview({ preview: PREVIEW_QUERY })(PostTemplate)

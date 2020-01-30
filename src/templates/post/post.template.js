@@ -214,39 +214,41 @@ const PostTemplate = ({ preview, pageContext, data }) => {
           <h2 className="font-normal text-27 leading-body">Related Posts</h2>
 
           <ul className="flex flex-wrap pt-70 -mx-25">
-            {posts.map(post => (
-              <li className="w-1/3 px-25" key={post.id}>
-                <UniversalLink
-                  to={`/news/${post.slug}/`}
-                  className="flex flex-col h-full overflow-hidden bg-white border border-transparent rounded-5 shadow-box transition-all duration-300 hover:border-gray-200 hover:shadow-none"
-                >
-                  <header className="relative h-220 overflow">
-                    <BackgroundImage
-                      image={
-                        post.featuredImage.imageFile
-                          ? post.featuredImage.imageFile.childImageSharp.fluid
-                          : post.featuredImage.sourceUrl
-                      }
-                      additionalClasses="absolute inset-0 pointer-events-none"
-                      fallback={preview}
-                    />
-                  </header>
-                  <section className="flex flex-col flex-grow py-35 px-45">
-                    <p className="mb-20 text-gray-300 uppercase text-14 font-body tracking-button">
-                      {moment(post.date).format(`D/MM/YY`)}
-                    </p>
-                    <h3 className="font-normal mb-35 text-22 leading-body">
-                      {post.title}
-                    </h3>
-                    <footer className="mt-auto">
-                      <span className="leading-loose uppercase text-aqua-500 text-14 font-body tracking-button link-line-shrink">
-                        Read more
-                      </span>
-                    </footer>
-                  </section>
-                </UniversalLink>
-              </li>
-            ))}
+            {posts
+              .filter((item, index) => index < 3)
+              .map(post => (
+                <li className="w-1/3 px-25" key={post.id}>
+                  <UniversalLink
+                    to={`/news/${post.slug}/`}
+                    className="flex flex-col h-full overflow-hidden bg-white border border-transparent rounded-5 shadow-box transition-all duration-300 hover:border-gray-200 hover:shadow-none"
+                  >
+                    <header className="relative h-220 overflow">
+                      <BackgroundImage
+                        image={
+                          post.featuredImage.imageFile
+                            ? post.featuredImage.imageFile.childImageSharp.fluid
+                            : post.featuredImage.sourceUrl
+                        }
+                        additionalClasses="absolute inset-0 pointer-events-none"
+                        fallback={preview}
+                      />
+                    </header>
+                    <section className="flex flex-col flex-grow py-35 px-45">
+                      <p className="mb-20 text-gray-300 uppercase text-14 font-body tracking-button">
+                        {moment(post.date).format(`D/MM/YY`)}
+                      </p>
+                      <h3 className="font-normal mb-35 text-22 leading-body">
+                        {post.title}
+                      </h3>
+                      <footer className="mt-auto">
+                        <span className="leading-loose uppercase text-aqua-500 text-14 font-body tracking-button link-line-shrink">
+                          Read more
+                        </span>
+                      </footer>
+                    </section>
+                  </UniversalLink>
+                </li>
+              ))}
           </ul>
         </div>
       </div>

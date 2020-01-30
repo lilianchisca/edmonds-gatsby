@@ -7,12 +7,12 @@ import Sections from '../../sections/Sections'
 
 const PageTemplate = ({ pageContext }) => {
   const {
-    page: { title, builder },
+    page: { builder, seo },
   } = pageContext
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={seo.title} description={seo.metaDesc} />
       <Sections sections={builder.sections} />
     </Layout>
   )

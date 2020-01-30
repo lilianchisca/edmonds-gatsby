@@ -11,6 +11,10 @@ const PageTemplateFragment = layouts => `
         ${layouts}
       }
     }
+    seo {
+      title
+      metaDesc
+    }
   }
 `
 

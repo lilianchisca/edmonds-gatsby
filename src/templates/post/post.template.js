@@ -85,6 +85,7 @@ const PostTemplate = ({ preview, pageContext, data }) => {
     content,
     featuredImage,
     categories,
+    seo,
   } = preview ? preview.postBy : pageContext.post
   const propPosts = preview ? preview.posts.edges : data.wpgraphql.posts.edges
   const posts = propPosts
@@ -102,7 +103,7 @@ const PostTemplate = ({ preview, pageContext, data }) => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={seo.title} description={seo.metaDesc} />
       <section className="overflow-hidden bg-blue-600 border-yellow-500 border-b-5">
         <div className="relative flex items-center justify-center overflow-hidden min-h-330">
           <div className="relative w-full mx-auto text-center text-white max-w-1020 px-30 pt-55">

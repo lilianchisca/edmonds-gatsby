@@ -63,7 +63,7 @@ const StyledHeading = styled.h1`
 
 const ServiceTemplate = ({ pageContext }) => {
   const {
-    service: { title, content, uri, serviceTags },
+    service: { title, content, uri, serviceTags, seo },
   } = pageContext
   const [inView, setInView] = useState(false)
   const { isUp } = useScrollDirection()
@@ -78,7 +78,7 @@ const ServiceTemplate = ({ pageContext }) => {
 
   return (
     <Layout>
-      <SEO title={title} />
+      <SEO title={seo.title} description={seo.metaDesc} />
       <section className="overflow-hidden bg-blue-600 border-yellow-500 border-b-5">
         <div className="relative flex items-center justify-center overflow-hidden min-h-330">
           <div className="relative w-full mx-auto text-center text-white max-w-1020 px-30 pt-55">

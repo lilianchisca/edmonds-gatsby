@@ -31,6 +31,10 @@ const PostTemplateFragment = `
     author {
       name
     }
+    seo {
+      title
+      metaDesc
+    }
   }
 `
 
@@ -60,6 +64,10 @@ const PostPreviewQuery = `
       }
       author {
         name
+      }
+      seo {
+        title
+        metaDesc
       }
     }
     posts(where: { categoryName: $category }, first: 4) {

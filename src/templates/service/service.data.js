@@ -17,6 +17,10 @@ const ServiceTemplateFragment = `
         }
       }
     }
+    seo {
+      title
+      metaDesc
+    }
   }
 `
 

@@ -9,7 +9,9 @@ require(`dotenv`).config({
   path: `.env.${activeEnv}`,
 })
 
-console.log(`This WordPress Endpoint is used: 'https://edmondswp.mydevenv.co'`)
+console.log(
+  `This WordPress Endpoint is used: 'https://edmondsaccountancy.kinsta.cloud'`
+)
 
 module.exports = {
   plugins: [
@@ -67,7 +69,7 @@ module.exports = {
     {
       resolve: `gatsby-source-gravityforms`,
       options: {
-        baseUrl: `https://edmondswp.mydevenv.co`,
+        baseUrl: `https://edmondsaccountancy.kinsta.cloud`,
         api: {
           key: `ck_dcb2056dd47e24d25fe0febc3e38ae2ebac9abc5`,
           secret: `cs_1acd0184ab029b2eae252e94533997e721a7960d`,
@@ -79,14 +81,14 @@ module.exports = {
       options: {
         typeName: `WPGraphQL`,
         fieldName: `wpgraphql`,
-        url: `https://edmondswp.mydevenv.co/graphql`,
+        url: `https://edmondsaccountancy.kinsta.cloud/graphql`,
       },
     },
     {
       resolve: `gatsby-wpgraphql-inline-images`,
       options: {
-        wordPressUrl: `https://edmondswp.mydevenv.co/`,
-        uploadsUrl: `https://edmondswp.mydevenv.co/wp-content/uploads/`,
+        wordPressUrl: `https://edmondsaccountancy.kinsta.cloud/`,
+        uploadsUrl: `https://edmondsaccountancy.kinsta.cloud/wp-content/uploads/`,
         processPostTypes: [`Page`, `Post`, `Service`],
         graphqlTypeName: `WPGraphQL`,
       },

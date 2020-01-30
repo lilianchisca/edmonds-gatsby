@@ -18,7 +18,7 @@ export const client = new ApolloClient({
       },
     })),
     new HttpLink({
-      uri: `https://edmondswp.mydevenv.co/graphql`,
+      uri: `https://edmondsaccountancy.kinsta.cloud/graphql`,
       credentials: `include`,
     }),
   ]),

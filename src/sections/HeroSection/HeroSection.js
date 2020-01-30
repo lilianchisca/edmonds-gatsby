@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { shape, string } from 'prop-types'
 import styled from 'styled-components'
 
@@ -138,10 +138,17 @@ const HeroSection = ({
   button2,
 }) => {
   const [inView, setInView] = useState(false)
+  const nextRef = useRef(null)
 
   useEffect(() => {
     setInView(true)
   }, [])
+
+  const handleNext = () => {
+    nextRef.current.scrollIntoView({
+      behavior: `smooth`,
+    })
+  }
 
   return (
     <section data-section-index={sectionIndex}>
@@ -182,10 +189,9 @@ const HeroSection = ({
                 <span>
                   <span>
                     <Button
-                      to={button1.url}
-                      target={button1.target}
                       primary
                       additionalClasses="mx-17 mb-6 md:mb-0"
+                      handler={handleNext}
                     >
                       {button1.title}
                     </Button>
@@ -210,6 +216,7 @@ const HeroSection = ({
           ) : null}
         </div>
       </div>
+      <div ref={nextRef} />
       <Lines>
         <img src="/images/lines.png" alt="delimiter" />
       </Lines>

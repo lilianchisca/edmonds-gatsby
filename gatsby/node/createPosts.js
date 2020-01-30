@@ -67,10 +67,12 @@ module.exports = async ({ actions, graphql, reporter }) => {
     if (wpPosts) {
       wpPosts.forEach(post => {
         const postPath = `/news/${post.uri}`
-        const category = post.categories
-          ? post.categories.nodes.filter(({ name }) => name !== `Featured`)[0]
-              .name
-          : ``
+        const category =
+          post.categories &&
+          post.categories.nodes.filter(({ name }) => name !== `Featured`)
+            ? post.categories.nodes.filter(({ name }) => name !== `Featured`)[0]
+                .name
+            : ``
 
         createPage({
           path: postPath,

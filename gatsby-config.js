@@ -86,5 +86,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        headers: {
+          '/*': [`Access-Control-Allow-Origin: *`],
+        },
+      },
+    },
   ],
 }

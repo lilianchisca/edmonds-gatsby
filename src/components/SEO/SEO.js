@@ -28,7 +28,7 @@ const SEO = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={decode(title)}
-      titleTemplate={`%s | ${generalSettings.title}`}
+      titleTemplate="%s"
       meta={[
         {
           name: `description`,

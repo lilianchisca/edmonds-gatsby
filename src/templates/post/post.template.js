@@ -14,7 +14,7 @@ import UniversalLink from '../../components/UniversalLink'
 import BackgroundImage from '../../components/BackgroundImage'
 import RellaxParallax from '../../components/RellaxParallax'
 import withPreview from '../../components/withPreview'
-import { PostAdditionalQuery, PostPreviewQuery } from './post.data'
+import { PostPreviewQuery } from './post.data'
 
 const Chevron = styled.div`
   width: 6px;
@@ -216,8 +216,8 @@ const PostTemplate = ({ preview, pageContext, data }) => {
           <ul className="flex flex-wrap pt-70 -mx-25">
             {posts.map(post => (
               <li className="w-1/3 px-25" key={post.id}>
-                <a
-                  href={`/news/${post.slug}/`}
+                <UniversalLink
+                  to={`/news/${post.slug}/`}
                   className="flex flex-col h-full overflow-hidden bg-white border border-transparent rounded-5 shadow-box transition-all duration-300 hover:border-gray-200 hover:shadow-none"
                 >
                   <header className="relative h-220 overflow">
@@ -244,7 +244,7 @@ const PostTemplate = ({ preview, pageContext, data }) => {
                       </span>
                     </footer>
                   </section>
-                </a>
+                </UniversalLink>
               </li>
             ))}
           </ul>

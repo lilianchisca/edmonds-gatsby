@@ -14,6 +14,12 @@ console.log(`This WordPress Endpoint is used: 'https://edmondswp.mydevenv.co'`)
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-plugin-transition-link`,
+      options: {
+        injectPageProps: false,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
@@ -51,7 +57,7 @@ module.exports = {
     // {
     //   resolve: `gatsby-source-gravityforms`,
     //   options: {
-    //     baseUrl: `https://edmondswp.mydevenv.co`,
+    //     baseUrl: `http://edmonds.local`,
     //     api: {
     //       key: `ck_84e457df9d648a3cdc1cfa76616d822848f8a742`,
     //       secret: `cs_bf83318787f5f44632e9a06c48c6502be26bc073`,

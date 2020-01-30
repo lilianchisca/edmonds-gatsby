@@ -39,7 +39,6 @@ const UniversalLink = ({
   const wordPressUrl = wpgraphql.generalSettings.url
   const coverWrap = useRef(null)
   const coverEl = useRef(null)
-
   const internal = to && /^\/(?!\/)/.test(createLocalLink(to, wordPressUrl))
 
   if (internal) {

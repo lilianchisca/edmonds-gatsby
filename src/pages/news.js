@@ -306,9 +306,10 @@ const NewsPage = () => {
                       <p className="mb-20 text-gray-300 uppercase text-14 font-body tracking-button">
                         Featured
                       </p>
-                      <h3 className="font-normal mb-15 text-22 leading-body">
-                        {post.title}
-                      </h3>
+                      <h3
+                        className="font-normal mb-15 text-22 leading-body"
+                        dangerouslySetInnerHTML={{ __html: post.title }}
+                      />
                       <div
                         className="mx-auto leading-loose text-gray-400 mb-35 text-16 tracking-body max-w-460"
                         dangerouslySetInnerHTML={{ __html: post.excerpt }}

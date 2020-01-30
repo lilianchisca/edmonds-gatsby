@@ -167,7 +167,10 @@ const PostTemplate = ({ preview, pageContext, data }) => {
           <h3 className="mb-20 text-gray-300 uppercase text-14 font-body tracking-button">
             {moment(date).format(`D/MM/YY`)}
           </h3>
-          <h2 className="mb-20 font-normal text-32 leading-body">{title}</h2>
+          <h2
+            className="mb-20 font-normal text-32 leading-body"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
           <p className="text-gray-300 uppercase text-14 font-body tracking-button">
             by <span className="text-aqua-500">{author.name}</span>
           </p>
@@ -238,9 +241,10 @@ const PostTemplate = ({ preview, pageContext, data }) => {
                       <p className="mb-20 text-gray-300 uppercase text-14 font-body tracking-button">
                         {moment(post.date).format(`D/MM/YY`)}
                       </p>
-                      <h3 className="font-normal mb-35 text-22 leading-body">
-                        {post.title}
-                      </h3>
+                      <h3
+                        className="font-normal mb-35 text-22 leading-body"
+                        dangerouslySetInnerHTML={{ __html: post.title }}
+                      />
                       <footer className="mt-auto">
                         <span className="leading-loose uppercase text-aqua-500 text-14 font-body tracking-button link-line-shrink">
                           Read more

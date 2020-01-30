@@ -129,7 +129,7 @@ const PostTemplate = ({ preview, pageContext, data }) => {
                 News
               </UniversalLink>
               <Chevron />
-              {category && (
+              {category && category !== `` && (
                 <>
                   <UniversalLink
                     to={`/category/${category[0].slug}/`}

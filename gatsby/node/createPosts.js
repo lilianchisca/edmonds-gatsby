@@ -70,6 +70,7 @@ module.exports = async ({ actions, graphql, reporter }) => {
         const category =
           post.categories &&
           post.categories.nodes.filter(({ name }) => name !== `Featured`)
+            .length > 0
             ? post.categories.nodes.filter(({ name }) => name !== `Featured`)[0]
                 .name
             : ``

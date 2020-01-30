@@ -130,9 +130,10 @@ const TestimonialsSlider = ({
                       className="mx-auto mb-20 leading-loose text-blue-500 text-24 max-w-830 font-heading"
                       dangerouslySetInnerHTML={{ __html: testimonial.content }}
                     />
-                    <h3 className="uppercase text-aqua-500 text-14 font-body tracking-button">
-                      {testimonial.title}
-                    </h3>
+                    <h3
+                      className="uppercase text-aqua-500 text-14 font-body tracking-button"
+                      dangerouslySetInnerHTML={{ __html: testimonial.title }}
+                    />
                   </div>
                 ))}
               </Slider>
@@ -162,9 +163,10 @@ const TestimonialsSlider = ({
                       className="mx-auto mb-20 leading-loose text-white text-24 max-w-830 font-heading"
                       dangerouslySetInnerHTML={{ __html: testimonial.content }}
                     />
-                    <h3 className="uppercase text-aqua-500 text-14 font-body tracking-button">
-                      {testimonial.title}
-                    </h3>
+                    <h3
+                      className="uppercase text-aqua-500 text-14 font-body tracking-button"
+                      dangerouslySetInnerHTML={{ __html: testimonial.title }}
+                    />
                   </div>
                 ))}
               </Slider>

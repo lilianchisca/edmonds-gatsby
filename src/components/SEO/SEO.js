@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
+import { decode } from 'he'
 
 const SEO = ({ description, lang, meta, title }) => {
   const {
@@ -26,20 +27,20 @@ const SEO = ({ description, lang, meta, title }) => {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={decode(title)}
       titleTemplate={`%s | ${generalSettings.title}`}
       meta={[
         {
           name: `description`,
-          content: metaDescription,
+          content: decode(metaDescription),
         },
         {
           property: `og:title`,
-          content: title,
+          content: decode(title),
         },
         {
           property: `og:description`,
-          content: metaDescription,
+          content: decode(metaDescription),
         },
         {
           property: `og:type`,
@@ -55,11 +56,11 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: decode(title),
         },
         {
           name: `twitter:description`,
-          content: metaDescription,
+          content: decode(metaDescription),
         },
       ].concat(meta)}
     />
